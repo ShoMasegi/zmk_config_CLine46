@@ -22,16 +22,16 @@ manifest:
     # DYA Studio モジュール（すべて cormoran リポジトリ）
     - name: zmk-module-ble-management
       remote: cormoran
-      revision: main
+      revision: zmk-v0.3.0.0   # main は v4 系へ移行したため v0.3 互換タグに固定
     - name: zmk-module-battery-history
       remote: cormoran
       revision: main
     - name: zmk-module-settings-rpc
       remote: cormoran
-      revision: main
+      revision: zmk-v0.3.0.0   # main は v4 系へ移行したため v0.3 互換タグに固定
     - name: zmk-module-runtime-input-processor
       remote: cormoran
-      revision: main
+      revision: zmk-v0.3.0.0   # main は v4 系へ移行(too many arguments to zmk_keymap_layer_activate)したため v0.3 互換タグに固定
     - name: zmk-pmw3610-driver
       remote: badjeff
       revision: zmk-0.3
