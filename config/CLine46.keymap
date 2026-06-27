@@ -21,11 +21,6 @@
             bindings = <&kp LS(TAB)>;
             key-positions = <12 13>;
         };
-
-        to_scroll_layer {
-            bindings = <&mo 5>;
-            key-positions = <21 22>;
-        };
     };
 
     macros {
@@ -81,7 +76,7 @@
         Default {
             bindings = <
 &kp TAB     &kp Q  &kp W         &kp E  &kp R        &kp T                                                 &kp Y                          &kp U  &kp I      &kp O    &kp P           &kp BSPC
-&kp LCTRL   &kp A  &kp S         &kp D  &kp F        &kp G                                                 &kp H                          &kp J  &kp K      &kp L    &kp MINUS       &kp ENTER
+&kp LCTRL   &kp A  &kp S         &kp D  &kp F        &kp G                                                 &kp H                          &kp J  &kp K      &kp L    &lt 5 MINUS     &kp ENTER
 &kp LSHIFT  &kp Z  &kp X         &kp C  &kp V        &kp B                                                 &kp N                          &kp M  &kp COMMA  &kp DOT  &hmt_colon 2 0  &kp RSHIFT
             &mo 4  &kp LEFT_ALT  &mo 3  &lt 1 SLASH  &hmt LEFT_COMMAND LANGUAGE_2  &kp SPACE    &kp SPACE  &hmt RIGHT_COMMAND LANGUAGE_1                    &mo 6    &lt 5 ESCAPE
             >;
