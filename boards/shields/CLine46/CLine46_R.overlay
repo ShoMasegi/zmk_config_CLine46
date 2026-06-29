@@ -89,4 +89,8 @@
 // タイピング中の手の振動やボールへの軽い接触による誤起動を防ぐ。まず 400ms から開始し調整する。
 &zip_temp_layer {
     require-prior-idle-ms = <400>;
+    // マウス機能キー + クリック併用したい修飾キー(Shift/⌘/Control)の位置。
+    // これら以外のキーを押すとタイムアウト前でも即マウスレイヤーを解除する。
+    // 12:LCTRL 19/20/21:MB1/MB3/MB2 24:LSHIFT 31/32/33:MB4/RG(W)/MB5 35:RSHIFT 40/43:L/R_COMMAND
+    excluded-positions = <12 19 20 21 24 31 32 33 35 40 43>;
 };

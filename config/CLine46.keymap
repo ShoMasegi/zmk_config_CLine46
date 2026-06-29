@@ -30,6 +30,24 @@
             bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "TO_LAYER_0";
         };
+
+        exit_AML: exit_AML {
+            compatible = "zmk,behavior-macro";
+            wait-ms = <0>;
+            tap-ms = <0>;
+            #binding-cells = <0>;
+            bindings = <&tog_off 4>;          // レイヤー4(Mouse)を OFF
+            label = "exit_AML";
+        };
+
+        kp_exit_AML: kp_exit_AML {
+            compatible = "zmk,behavior-macro-one-param";
+            wait-ms = <0>;
+            tap-ms = <0>;
+            #binding-cells = <1>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &exit_AML>;  // キー送出→AML解除
+            label = "kp_exit_AML";
+        };
     };
 
     behaviors {
@@ -68,6 +86,22 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
+        tog_off: toggle_layer_off {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <1>;
+            display-name = "Toggle Layer Off";
+            toggle-mode = "off";
+        };
+
+        mt_exit_AML_on_tap: mt_exit_AML_on_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "mt_exit_AML_on_tap";
+            bindings = <&kp>, <&kp_exit_AML>;   // hold=修飾キー / tap=キー送出+AML解除
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;            // 既存 hmt と同じ(flavor 未指定=hold-preferred)
+        };
     };
 
     keymap {
@@ -78,7 +112,7 @@
 &kp TAB     &kp Q  &kp W         &kp E  &kp R        &kp T                                                 &kp Y                          &kp U  &kp I      &kp O    &kp P           &kp BSPC
 &kp LCTRL   &kp A  &kp S         &kp D  &kp F        &kp G                                                 &kp H                          &kp J  &kp K      &kp L    &lt 5 MINUS     &kp ENTER
 &kp LSHIFT  &kp Z  &kp X         &kp C  &kp V        &kp B                                                 &kp N                          &kp M  &kp COMMA  &kp DOT  &hmt_colon 2 0  &kp RSHIFT
-            &mo 4  &kp LEFT_ALT  &mo 3  &lt 1 SLASH  &hmt LEFT_COMMAND LANGUAGE_2  &kp SPACE    &kp SPACE  &hmt RIGHT_COMMAND LANGUAGE_1                    &mo 6    &lt 5 ESCAPE
+            &mo 4  &kp LEFT_ALT  &mo 3  &lt 1 SLASH  &mt_exit_AML_on_tap LEFT_COMMAND LANGUAGE_2  &kp SPACE    &kp SPACE  &mt_exit_AML_on_tap RIGHT_COMMAND LANGUAGE_1                    &mo 6    &lt 5 ESCAPE
             >;
         };
 
